@@ -23,7 +23,7 @@ trait CsvTo{
 		if(empty($csvFileName)){
 			$fileNames = scandir($dir);
 			foreach ($fileNames as $fileName) {
-				if(preg_match('/\.csv$/i',$fileName)===false){continue;}
+				if((bool)preg_match('/\.csv$/i',$fileName)===false){continue;}
 				$csvs[$fileName] = $this->toArray($dir,$fileName,$baseEncoding,$toEncoding);
 			}
 		}
