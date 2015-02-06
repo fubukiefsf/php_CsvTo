@@ -61,7 +61,7 @@ trait CsvTo{
 	 * @param string $baseEncoding 
 	 * @param string $toEncoding 
 	 * @access protected
-	 * @return array
+	 * @return json
 	 */
 	protected function toJson($dir='',$fileName='',$baseEncoding='sjis-win',$toEncoding='UTF-8'){
 		return json_encode($this->toMap($dir,$fileName,$baseEncoding,$toEncoding));
