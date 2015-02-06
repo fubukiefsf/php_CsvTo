@@ -5,9 +5,9 @@ trait to read csv file, and to convert into array and json.
 php5.4 <=
 
 ##usage
-``
-<?php  
-require_once('CsvTo.php');
+``  
+<?php   
+require_once('CsvTo.php');  
 class A{  
 	use CsvTo;  
 	public function someFiles($dir){  
@@ -17,7 +17,7 @@ class A{
 		$this -> csvFilesToArray($dir,$csvFileName,'SJIS','UTF-8');  
 	}  
 }  
-``
+``  
 
 ##ToDo
 toMap
