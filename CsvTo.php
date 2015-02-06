@@ -40,8 +40,7 @@ trait CsvTo{
 	 * @return array
 	 */
 	protected function toArray($dir='',$fileName='',$baseEncoding='sjis-win',$toEncoding='UTF-8'){
-		$fileData = file_get_contents(($dir.'/'.$fileName));
-		$fileData = mb_convert_encoding($fileData,$toEncoding,$baseEncoding);
+		$fileData = mb_convert_encoding(file_get_contents(($dir.'/'.$fileName)),$toEncoding,$baseEncoding);
 		$tmp = tmpfile();
 		$meta = stream_get_meta_data($tmp);
 		fwrite($tmp,$fileData);
