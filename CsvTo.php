@@ -50,7 +50,11 @@ trait CsvTo{
 			$line = explode(",",$line);
 			foreach ($line as $ln) {
 				preg_match('/"(.*?)"/',$ln,$matches);
-				$lns[] = $matches[1];
+				if(empty($matches[1])){
+					$lns[] ="";
+				}else{
+					$lns[] = $matches[1];
+				}
 			}
 			$csv[] = $lns;
 			unset($lns);
