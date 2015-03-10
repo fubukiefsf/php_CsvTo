@@ -18,7 +18,7 @@ trait CsvTo{
 	 * @access protected
 	 * @return array
 	 */
-	protected function csvFilesToArray($dir='',$baseEncoding='sjis-win',$toEncoding='UTF-8'){
+	protected function csvFilesToArray($dir='',$baseEncoding='auto',$toEncoding='UTF-8'){
 		if(empty($dir)){return ['false'];}
 		if(empty($csvFileName)){
 			$fileNames = scandir($dir);
@@ -39,7 +39,7 @@ trait CsvTo{
 	 * @access protected
 	 * @return array
 	 */
-	protected function toArray($dir='',$fileName='',$baseEncoding='sjis-win',$toEncoding='UTF-8'){
+	protected function toArray($dir='',$fileName='',$baseEncoding='auto',$toEncoding='UTF-8'){
 		$fileData = mb_convert_encoding(file_get_contents(($dir.'/'.$fileName)),$toEncoding,$baseEncoding);
 		$tmp = tmpfile();
 		$meta = stream_get_meta_data($tmp);
@@ -68,7 +68,7 @@ trait CsvTo{
 	 * @access protected
 	 * @return json
 	 */
-	protected function toJson($dir='',$fileName='',$baseEncoding='sjis-win',$toEncoding='UTF-8'){
+	protected function toJson($dir='',$fileName='',$baseEncoding='auto',$toEncoding='UTF-8'){
 		return json_encode($this->toMap($dir,$fileName,$baseEncoding,$toEncoding));
 	}
 }
