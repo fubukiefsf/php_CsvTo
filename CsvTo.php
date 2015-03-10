@@ -15,6 +15,7 @@ trait CsvTo{
 	 * @param string $dir  
 	 * @param string $baseEncoding 
 	 * @param string $toEncoding 
+	 * @param string $mode (toArray,toJson or toMap)
 	 * @access protected
 	 * @return array
 	 */
