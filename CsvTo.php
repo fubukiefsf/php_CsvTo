@@ -3,14 +3,14 @@
 /**
  * CsvTo
  * 
- * @version v0.0.1
+ * @version v0.0.2
  * @copyright 2015  fubukiefsf 
  * @author fubukiefsf 
  * @License The MIT License (MIT)
  */
 trait CsvTo{
 	/**
-	 * csvFilesToArray 
+	 * csvFilesTo
 	 * 
 	 * @param string $dir  
 	 * @param string $baseEncoding 
@@ -18,13 +18,13 @@ trait CsvTo{
 	 * @access protected
 	 * @return array
 	 */
-	protected function csvFilesToArray($dir='',$baseEncoding='auto',$toEncoding='UTF-8'){
+	protected function csvFilesTo($dir='',$baseEncoding='auto',$toEncoding='UTF-8',$mode='toArray'){
 		if(empty($dir)){return ['false'];}
 		if(empty($csvFileName)){
 			$fileNames = scandir($dir);
 			foreach ($fileNames as $fileName) {
 				if((bool)preg_match('/\.csv$/i',$fileName)===false){continue;}
-				$csvs[$fileName] = $this->toArray($dir,$fileName,$baseEncoding,$toEncoding);
+				$csvs[$fileName] = $this->$mode($dir,$fileName,$baseEncoding,$toEncoding);
 			}
 		}
 		return $csvs;
@@ -71,4 +71,27 @@ trait CsvTo{
 	protected function toJson($dir='',$fileName='',$baseEncoding='auto',$toEncoding='UTF-8'){
 		return json_encode($this->toMap($dir,$fileName,$baseEncoding,$toEncoding));
 	}
+	/**
+	 * toMap 
+	 * 
+	 * @param string $dir 
+	 * @param string $fileName 
+	 * @param string $baseEncoding 
+	 * @param string $toEncoding 
+	 * @access protected
+	 * @return hashmap
+	 */
+	protected function toMap($dir='',$fileName='',$baseEncoding='auto',$toEncoding='UTF-8'){
+		$arrays = $this -> toArray($dir,$fileName,$baseEncoding,$toEncoding);
+		foreach ($arrays as $line) {
+			$i =0;
+			foreach ($line as $ln) {
+				$map[$arrays[0][$i]] = $ln;
+				$i++;
+			}
+			$maps[] = $map;
+		}
+		return $maps;
+	}
+
 }
