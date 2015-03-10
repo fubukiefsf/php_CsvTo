@@ -11,10 +11,17 @@ php5.4 <=
     class A{  
         use CsvTo;  
         public function someFiles($dir){  
-            $this -> csvFilesTo($dir,'SJIS','UTF-8','toJson');  
+            $this -> csvFilesTo($dir,'SJIS','UTF-8','toMap');  
         }  
         public function someFile($dir,$fileName){  
-            $this -> csvFilesToArray($dir,$csvFileName,'SJIS','UTF-8');  
+            /*toArray*/
+            $this -> toArray($dir,$csvFileName,'SJIS','UTF-8');
+            
+            /*toMap*/
+            // $this -> toMap($dir,$csvFileName,'SJIS','UTF-8');
+            
+            /*toJson*/
+            // $this -> toJson($dir,$csvFileName,'SJIS','UTF-8');
         }  
     }  
      
