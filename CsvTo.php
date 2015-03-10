@@ -47,7 +47,13 @@ trait CsvTo{
 		rewind($tmp);
 		$data = new SplFIleObject($meta['uri']);
 		foreach ($data as $line) {
-			$csv[] = $line;
+			$line = explode(",",$line);
+			foreach ($line as $ln) {
+				preg_match('/"(.*?)"/',$ln,$matches);
+				$lns[] = $matches[1];
+			}
+			$csv[] = $lns;
+			unset($lns);
 		}
 		fclose($tmp);
 		return $csv;
