@@ -1,6 +1,6 @@
 #trait CsvTo.php
 
-trait to read csv file, and to convert into array and json.
+trait to read csv file, and to convert into array,map and json.
 
 php5.4 <=
 
