@@ -11,7 +11,7 @@ php5.4 <=
     class A{  
         use CsvTo;  
         public function someFiles($dir){  
-            $this -> csvFilesToArray($dir,'SJIS','UTF-8');  
+            $this -> csvFilesTo($dir,'SJIS','UTF-8','toJson');  
         }  
         public function someFile($dir,$fileName){  
             $this -> csvFilesToArray($dir,$csvFileName,'SJIS','UTF-8');  
@@ -19,5 +19,3 @@ php5.4 <=
     }  
      
 
-##ToDo
-toMap
