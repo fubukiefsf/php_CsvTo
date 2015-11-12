@@ -53,9 +53,9 @@ trait CsvTo{
 				preg_match('/"(.*?)"/',$ln,$matches);
 				if(empty($matches[1])){
 					$lns[] ="";
-				}else{
-					$lns[] = $matches[1];
+					continue;
 				}
+				$lns[] = $matches[1];
 			}
 			$csv[] = $lns;
 			unset($lns);
@@ -77,7 +77,7 @@ trait CsvTo{
 		return json_encode($this->toMap($dir,$fileName,$baseEncoding,$toEncoding));
 	}
 	/**
-	 * toMap 
+	 * toHashMap 
 	 * 
 	 * @param string $dir 
 	 * @param string $fileName 
@@ -94,7 +94,9 @@ trait CsvTo{
 				$map[$arrays[0][$i]] = $ln;
 				$i++;
 			}
+			unset($i);
 			$maps[] = $map;
+			unset($map);
 		}
 		return $maps;
 	}
